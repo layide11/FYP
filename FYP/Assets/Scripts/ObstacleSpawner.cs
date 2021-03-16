@@ -9,37 +9,57 @@ public class ObstacleSpawner : MonoBehaviour
 
     public GameObject[] __FoodPrefabs;
 
-    public float __TimeBetweenWaves = 1f;
+    public GameObject __ApplePrefab;
+
+    public float __TimeBetweenWaves = 2f;
 
     public int __ObstacleCount = 4;
 
     private float __TimeToSpawn = 1f;
 
+    private int __NoOfWavesSinceSpeedIncrease = 0;
+
+
+    
     void Update()
     {
 
         if (Time.time >= __TimeToSpawn)
         {
-            SpawnBlocks();
+            SpawnFood();
             __TimeToSpawn = Time.time + __TimeBetweenWaves;
+        }
+
+        if (__NoOfWavesSinceSpeedIncrease >= 5 && __TimeBetweenWaves > 0.6f)
+        {
+            __TimeBetweenWaves -= 0.2f;
+            __NoOfWavesSinceSpeedIncrease = 0;
         }
 
     }
 
-    void SpawnBlocks()
+    void SpawnFood()
     {
-        //possible to extennd for levels yay!!
         IEnumerable<int> _RandomSpawnIndexList = FisherShuffle.CreateShuffledList(__SpawnPoints.Length);
 
-        IEnumerable<int> _SkippedSpwanIndexs = _RandomSpawnIndexList.Take(__SpawnPoints.Length - __ObstacleCount);
-        
+        IEnumerable<int> _IndexesToSpawnSugaryFood = _RandomSpawnIndexList.Take(__ObstacleCount);
+        int _IndexToSpawnApple = _IndexesToSpawnSugaryFood.Take(1).FirstOrDefault();
         for (int i = 0; i < __SpawnPoints.Length; i++)
         {
-            if (!_SkippedSpwanIndexs.Contains(i))
+            if (_IndexesToSpawnSugaryFood.Contains(i))
             {
-		        int _RandomFoodPrefabIndex = Random.Range(0, __FoodPrefabs.Length);
-                Instantiate(__FoodPrefabs[_RandomFoodPrefabIndex ], __SpawnPoints[i].position, Quaternion.identity);
+                if (i == _IndexToSpawnApple)
+                {
+                    Instantiate(__ApplePrefab, __SpawnPoints[i].position, Quaternion.identity);
+                }
+                else
+                {
+		            int _RandomFoodPrefabIndex = Random.Range(0, __FoodPrefabs.Length);
+                    Instantiate(__FoodPrefabs[_RandomFoodPrefabIndex ], __SpawnPoints[i].position, Quaternion.identity);
+                }
             }
         }
+        __NoOfWavesSinceSpeedIncrease++;
+        
     }
 }

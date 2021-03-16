@@ -909,7 +909,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.13465646, g: 0.20702799, b: 0.3207547, a: 1}
+  m_BackGroundColor: {r: 0.13333334, g: 0.32156864, b: 0.30802807, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1220,7 +1220,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 00db509cd7c4c49aa8900b1bae6335d6, type: 3}
-  m_Color: {r: 0.19215688, g: 0.3019608, b: 0.47450984, a: 1}
+  m_Color: {r: 0.23487006, g: 0.5471698, b: 0.2979945, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1367,8 +1367,10 @@ MonoBehaviour:
   - {fileID: 8282154015231238162, guid: 0fcd05266faf34d1ead04cd05aee180c, type: 3}
   - {fileID: 6170951194461701341, guid: a0626a9a0313e42d2a6ebff37345292e, type: 3}
   - {fileID: 7636048147309841108, guid: c059294a42bc74746ab5826c7e812180, type: 3}
-  __TimeBetweenWaves: 1
-  __ObstacleCount: 5
+  __ApplePrefab: {fileID: 7636048147309841108, guid: 4da2b93a2a9ef45f397e21ed1a5492f0,
+    type: 3}
+  __TimeBetweenWaves: 2
+  __ObstacleCount: 4
 --- !u!4 &2002826662
 Transform:
   m_ObjectHideFlags: 0

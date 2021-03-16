@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 	public float __MapWidth = 4.2f;
 	public Text __ScoreText;
 	public Text __HighScoreText;
+	private const string _ApplePrefabTag = "ApplePrefab";
 
 	private Rigidbody2D __RigidBody;
 
@@ -28,8 +29,18 @@ public class Player : MonoBehaviour
 
 	}
 
-	void OnCollisionEnter2D()
+	void OnCollisionEnter2D(Collision2D collision)
 	{
-		FindObjectOfType<GameManager>().EndGame();
+		GameManager _GameManager = FindObjectOfType<GameManager>();
+		GameObject _CollidedObject = collision.gameObject;
+		if (_CollidedObject.tag == _ApplePrefabTag)
+		{
+			Destroy(_CollidedObject);
+			_GameManager.AddAppleScore();
+		}
+        else
+        {
+			_GameManager.EndGame();
+        }
 	}
 }

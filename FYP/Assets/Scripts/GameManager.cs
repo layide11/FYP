@@ -11,10 +11,11 @@ public class GameManager : MonoBehaviour
     public int __HighScore;
     private int __CurrentScore;
     public float __ScoreIncreaseSpeed = 0.2f;
-
+    
     public float __Slowness = 10f;
+    private int __AppleScore = 10;
 
-	public void EndGame()
+    public void EndGame()
 	{
         UpdateHighScore();
         SaveSystem.SavePlayerData(this);
@@ -68,5 +69,11 @@ public class GameManager : MonoBehaviour
         {
             __HighScore = __CurrentScore;
         }
+    }
+
+    public void AddAppleScore()
+    {
+        __CurrentScore += __AppleScore;
+        __ScoreText.text = __CurrentScore.ToString();
     }
 }
