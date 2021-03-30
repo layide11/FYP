@@ -1,12 +1,16 @@
 ﻿<Properties StartupConfiguration="{4C363F3F-15D1-DCA8-F7C9-3AF0D0F4CB5F}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/BackgroundMusic.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
     <Files>
+      <File FileName="Assets/Scripts/BackgroundMusic.cs" Line="20" Column="39" />
       <File FileName="Assets/Scripts/Food.cs" Line="10" Column="33" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="77" Column="54" />
-      <File FileName="Assets/Scripts/MainMenu.cs" />
-      <File FileName="Assets/Scripts/ObstacleSpawner.cs" Line="11" Column="1" />
-      <File FileName="Assets/Scripts/Player.cs" Line="42" Column="10" />
-      <File FileName="Assets/Scripts/BackgroundMusic.cs" Line="20" Column="40" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="28" Column="42" />
+      <File FileName="Assets/Scripts/MainMenu.cs" Line="17" Column="6" />
+      <File FileName="Assets/Scripts/ObstacleSpawner.cs" Line="29" Column="1" />
+      <File FileName="Assets/Scripts/Player.cs" Line="43" Column="29" />
+      <File FileName="Assets/Scripts/SavedData.cs" Line="14" Column="1" />
+      <File FileName="Assets/Scripts/FisherShuffle.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SaveSystem.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SoundEffects.cs" Line="19" Column="38" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,22 +18,25 @@
           <Node name="FYP" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="BackgroundMusic.cs" selected="True" />
+                <Node name="GameManager.cs" selected="True" />
               </Node>
-              <Node name="TextMesh Pro" expanded="True" />
             </Node>
           </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>SceneManager.LoadScene(SceneManager.GetSceneByName("Menu")</Value>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f776500e-eeaa-43b2-a897-24d1635ce14a" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4cff32fc-127e-4b9a-b3ef-f0d44ab90af3" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/olayidebasorun/Documents/FYP/FYP CODE/FYP/FYP/Assets/Scripts/Player.cs" relfile="Assets/Scripts/Player.cs" line="37" column="1" />
-      <Breakpoint file="/Users/olayidebasorun/Documents/FYP/FYP CODE/FYP/FYP/Assets/Scripts/ObstacleSpawner.cs" relfile="Assets/Scripts/ObstacleSpawner.cs" line="29" column="1" />
+      <Breakpoint file="/Users/olayidebasorun/Documents/FYP/FYP CODE/FYP/FYP/Assets/Scripts/GameManager.cs" relfile="Assets/Scripts/GameManager.cs" line="27" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

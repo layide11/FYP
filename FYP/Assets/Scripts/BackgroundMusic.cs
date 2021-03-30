@@ -4,20 +4,36 @@ using UnityEngine;
 
 public class BackgroundMusic : MonoBehaviour
 {
-    private bool _IsMuted;
+    private bool __IsMute = false;
+    private float __MusicVolume = 1f;
+    private AudioSource __AudioSource;
+
     void Start()
     {
-        _IsMuted = false;
+        __AudioSource = GetComponent<AudioSource>();
+        
     }
+
+    private void Update()
+    {
+        __AudioSource.volume = __MusicVolume;
+        __AudioSource.mute = __IsMute;
+    }
+
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
     }
 
-    public void MuteMusic()
+    public void MuteMusic(bool wantMusic)
     {
-        _IsMuted = !_IsMuted;
-        AudioListener.pause = _IsMuted;
+        __IsMute = !wantMusic;
+       
     }
 
+ 
+    public void SetVolume(float volume)
+    {
+        __MusicVolume = volume;
+    }
 }

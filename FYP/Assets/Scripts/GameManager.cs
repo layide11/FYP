@@ -15,12 +15,20 @@ public class GameManager : MonoBehaviour
     public float __Slowness = 10f;
     private int __AppleScore = 10;
 
-    public void EndGame()
+    public void EndGame(bool withRestart)
 	{
         UpdateHighScore();
         SaveSystem.SavePlayerData(this);
+        if (withRestart)
+        {
+            StartCoroutine(RestartLevel());
+        }
+        else
+        {
+            SceneManager.LoadScene("Menu");
 
-        StartCoroutine(RestartLevel());
+        }
+
 	}
 
 	IEnumerator RestartLevel()
@@ -75,5 +83,11 @@ public class GameManager : MonoBehaviour
     {
         __CurrentScore += __AppleScore;
         __ScoreText.text = __CurrentScore.ToString();
+    }
+
+    public void ReturnHome()
+    {
+        EndGame(false);
+
     }
 }
