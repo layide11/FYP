@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 		}
         else
         {
-			_GameManager.EndGame(true);
+			_GameManager.UpdateHighScores();
         }
 	}
 }

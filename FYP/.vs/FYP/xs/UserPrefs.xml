@@ -1,16 +1,16 @@
 ﻿<Properties StartupConfiguration="{4C363F3F-15D1-DCA8-F7C9-3AF0D0F4CB5F}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LeaderBoardManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/BackgroundMusic.cs" Line="20" Column="39" />
-      <File FileName="Assets/Scripts/Food.cs" Line="10" Column="33" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="28" Column="42" />
-      <File FileName="Assets/Scripts/MainMenu.cs" Line="17" Column="6" />
-      <File FileName="Assets/Scripts/ObstacleSpawner.cs" Line="29" Column="1" />
-      <File FileName="Assets/Scripts/Player.cs" Line="43" Column="29" />
-      <File FileName="Assets/Scripts/SavedData.cs" Line="14" Column="1" />
-      <File FileName="Assets/Scripts/FisherShuffle.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SaveSystem.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SoundEffects.cs" Line="19" Column="38" />
+      <File FileName="Assets/Scripts/DialogueTrigger.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/BackgroundMusic.cs" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="7" Column="1" />
+      <File FileName="Assets/Scripts/MainMenu.cs" Line="19" Column="1" />
+      <File FileName="Assets/Scripts/DialogueManager.cs" Line="19" Column="1" />
+      <File FileName="Assets/Scripts/SoundEffects.cs" Line="42" Column="1" />
+      <File FileName="Assets/Scripts/SaveSystem.cs" Line="24" Column="6" />
+      <File FileName="Assets/Scripts/SavedData.cs" Line="8" Column="12" />
+      <File FileName="Assets/Scripts/Player.cs" Line="43" Column="28" />
+      <File FileName="Assets/Scripts/LeaderBoardManager.cs" Line="40" Column="13" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,25 +18,30 @@
           <Node name="FYP" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="GameManager.cs" selected="True" />
+                <Node name="LeaderBoardManager.cs" selected="True" />
               </Node>
             </Node>
           </Node>
         </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>SceneManager.LoadScene(SceneManager.GetSceneByName("Menu")</Value>
-        </State>
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4cff32fc-127e-4b9a-b3ef-f0d44ab90af3" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="7f559272-9926-4424-94d0-3cbe95470175" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
+      <Breakpoint file="/Users/olayidebasorun/Documents/FYP/FYP CODE/FYP/FYP/Assets/Scripts/BackgroundMusic.cs" relfile="Assets/Scripts/BackgroundMusic.cs" line="30" column="1" />
+      <Breakpoint file="/Users/olayidebasorun/Documents/FYP/FYP CODE/FYP/FYP/Assets/Scripts/DialogueManager.cs" relfile="Assets/Scripts/DialogueManager.cs" line="17" column="1" />
+      <Breakpoint file="/Users/olayidebasorun/Documents/FYP/FYP CODE/FYP/FYP/Assets/Scripts/SoundEffects.cs" relfile="Assets/Scripts/SoundEffects.cs" line="42" column="1" />
       <Breakpoint file="/Users/olayidebasorun/Documents/FYP/FYP CODE/FYP/FYP/Assets/Scripts/GameManager.cs" relfile="Assets/Scripts/GameManager.cs" line="27" column="1" />
+      <Breakpoint file="/Users/olayidebasorun/Documents/FYP/FYP CODE/FYP/FYP/Assets/Scripts/GameManager.cs" relfile="Assets/Scripts/GameManager.cs" line="85" column="1" />
+      <Breakpoint file="/Users/olayidebasorun/Documents/FYP/FYP CODE/FYP/FYP/Assets/Scripts/GameManager.cs" relfile="Assets/Scripts/GameManager.cs" line="62" column="1" />
+      <Breakpoint file="/Users/olayidebasorun/Documents/FYP/FYP CODE/FYP/FYP/Assets/Scripts/GameManager.cs" relfile="Assets/Scripts/GameManager.cs" line="125" column="1" />
+      <Breakpoint file="/Users/olayidebasorun/Documents/FYP/FYP CODE/FYP/FYP/Assets/Scripts/LeaderBoardManager.cs" relfile="Assets/Scripts/LeaderBoardManager.cs" line="27" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

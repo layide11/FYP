@@ -3,22 +3,28 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
     public Text __ScoreText;
     public Text __HighScoreText;
-    public int __HighScore;
+    private int __HighScore;
+    private Dictionary<int, string> __LeaderBoardScores;
     private int __CurrentScore;
     public float __ScoreIncreaseSpeed = 0.2f;
-    
+
     public float __Slowness = 10f;
     private int __AppleScore = 10;
 
-    public void EndGame(bool withRestart)
-	{
-        UpdateHighScore();
-        SaveSystem.SavePlayerData(this);
+    public GameObject __InputCanvas;
+    public InputField __Name;
+    public GameObject __Canvas;
+    public GameObject __Player;
+    public GameObject __ObnstacleSpawner;
+
+    private void EndGame(bool withRestart)
+    {
         if (withRestart)
         {
             StartCoroutine(RestartLevel());
@@ -29,35 +35,37 @@ public class GameManager : MonoBehaviour
 
         }
 
-	}
+    }
 
-	IEnumerator RestartLevel()
-	{
-		Time.timeScale = 1f / __Slowness;
-		Time.fixedDeltaTime = Time.fixedDeltaTime / __Slowness;
+    private IEnumerator RestartLevel()
+    {
+        Time.timeScale = 1f / __Slowness;
+        Time.fixedDeltaTime = Time.fixedDeltaTime / __Slowness;
 
-		yield return new WaitForSeconds(1f / __Slowness);
+        yield return new WaitForSeconds(1f / __Slowness);
 
-		Time.timeScale = 1f;
-		Time.fixedDeltaTime = Time.fixedDeltaTime * __Slowness;
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = Time.fixedDeltaTime * __Slowness;
 
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-	}
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
 
     private void Start()
     {
+        __HighScore = 0;
+        __CurrentScore = 0;
+        __LeaderBoardScores = new Dictionary<int, string>();
         SavedData _SavedData = SaveSystem.LoadSavedData();
+        if (_SavedData != null)
+        {
+            __LeaderBoardScores = _SavedData.__LeaderBoardScores;
+            if (__LeaderBoardScores.Count > 0)
+            {
+                __HighScore = __LeaderBoardScores.Keys.Max();
+            }
+        }
 
-        if(_SavedData !=null)
-        {
-            __HighScore = _SavedData.__HighScore;
-        }
-        else
-        {
-            __HighScore = 0; 
-        }
-        
         __ScoreText.text = "0";
         __HighScoreText.text = __HighScore.ToString();
 
@@ -71,11 +79,32 @@ public class GameManager : MonoBehaviour
         __ScoreText.text = __CurrentScore.ToString();
     }
 
-    public void UpdateHighScore()
+    public void UpdateHighScores()
     {
-        if(__CurrentScore > __HighScore)
+        CancelInvoke();
+        bool _HasNewEntry = false;
+        if (__LeaderBoardScores.Count < 3)
         {
-            __HighScore = __CurrentScore;
+            if (!__LeaderBoardScores.ContainsKey(__CurrentScore))
+            {
+                ShowNameCollectionScreen(true);
+                _HasNewEntry = true;
+            }
+        }
+        else
+        {
+            int _LowestLeaderBoardScore = __LeaderBoardScores.Keys.Min();
+            
+            if (__CurrentScore > _LowestLeaderBoardScore)
+            {
+                __LeaderBoardScores.Remove(_LowestLeaderBoardScore);
+                ShowNameCollectionScreen(true);
+                _HasNewEntry = true;
+            }
+        }
+        if (!_HasNewEntry)
+        {
+            EndGame(true);
         }
     }
 
@@ -89,5 +118,24 @@ public class GameManager : MonoBehaviour
     {
         EndGame(false);
 
+    }
+
+    public void UpdateLeaderBoard()
+    {
+        __LeaderBoardScores.Add(__CurrentScore, __Name.text);
+        SaveSystem.SavePlayerData(__LeaderBoardScores);
+    }
+
+    public void ShowNameCollectionScreen(bool shouldShow)
+    {
+        __InputCanvas.SetActive(shouldShow);
+        __Canvas.SetActive(!shouldShow);
+        __ObnstacleSpawner.SetActive(!shouldShow);
+        __Player.SetActive(!shouldShow);
+    }
+
+    public void RestartGame()
+    {
+        StartCoroutine(RestartLevel());
     }
 }

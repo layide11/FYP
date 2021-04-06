@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 [System.Serializable]
 public class SavedData
 {
-    public int __HighScore;
+    public Dictionary<int, string> __LeaderBoardScores;
 
-    public SavedData(int highScore)
+    public SavedData(Dictionary<int, string>  leaderBoardScores)
     {
-        __HighScore = highScore;
-        
+        __LeaderBoardScores = leaderBoardScores;
     }
+
 }

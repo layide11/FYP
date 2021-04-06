@@ -2,17 +2,18 @@
 using System.IO;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public static class SaveSystem 
 {
-   public static void SavePlayerData(GameManager gameManager)
+   public static void SavePlayerData(Dictionary<int, string> leaderBoardScores )
     {
         BinaryFormatter _Formatter = new BinaryFormatter();
        
         FileStream stream = new FileStream(GetFilePath(), FileMode.Create);
 
 
-        SavedData _Data = new SavedData(gameManager.__HighScore);
+        SavedData _Data = new SavedData(leaderBoardScores);
 
         _Formatter.Serialize(stream, _Data);
         stream.Close();
@@ -31,11 +32,16 @@ public static class SaveSystem
 
             if (_Stream.Length == 0)
             {
-                _Data = new SavedData(0);
+                _Data = new SavedData(new Dictionary<int, string>());
             }
             else
             {
                 _Data = _Formatter.Deserialize(_Stream) as SavedData;
+                //extra null check for secuirity
+                if(_Data.__LeaderBoardScores == null)
+                {
+                    _Data.__LeaderBoardScores = new Dictionary<int, string>();
+                }
             }
             _Stream.Close();
 
