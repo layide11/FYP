@@ -21,7 +21,7 @@ public class LeaderBoardManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        if (__LeaderBoard.Count > 0)
+        if (__LeaderBoard != null)
         {
             List<int> _Keys = __LeaderBoard.Keys.ToList();
             _Keys.Sort();
