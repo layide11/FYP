@@ -8,10 +8,14 @@ using System.Linq;
 
 public class LeaderBoardManager : MonoBehaviour
 {
+    private Dictionary<int, string> __LeaderBoard;
     public List<TextMeshProUGUI> _Names;
     public List<TextMeshProUGUI> _Scores;
 
-    private Dictionary<int, string> __LeaderBoard;
+    public void BackPressed()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
 
     void Start()
     {
@@ -35,8 +39,4 @@ public class LeaderBoardManager : MonoBehaviour
         }
     }
 
-    public void BackPressed()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-    }
 }

@@ -7,21 +7,32 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-    public Text __ScoreText;
-    public Text __HighScoreText;
-    private int __HighScore;
-    private Dictionary<int, string> __LeaderBoardScores;
-    private int __CurrentScore;
-    public float __ScoreIncreaseSpeed = 0.2f;
-
-    public float __Slowness = 10f;
     private int __AppleScore = 10;
-
-    public GameObject __InputCanvas;
-    public InputField __Name;
     public GameObject __Canvas;
-    public GameObject __Player;
+    private int __CurrentScore;
+    private int __HighScore;
+    public Text __HighScoreText;
+    public GameObject __InputCanvas;
+    private Dictionary<int, string> __LeaderBoardScores;
+    public InputField __Name;
     public GameObject __ObnstacleSpawner;
+    public GameObject __Player;
+    public float __ScoreIncreaseSpeed = 0.2f;
+    public Text __ScoreText;
+    public float __Slowness = 10f;
+
+
+    public void AddAppleScore()
+    {
+        __CurrentScore += __AppleScore;
+        __ScoreText.text = __CurrentScore.ToString();
+    }
+
+    void AddToScore()
+    {
+        __CurrentScore++;
+        __ScoreText.text = __CurrentScore.ToString();
+    }
 
     private void EndGame(bool withRestart)
     {
@@ -37,6 +48,11 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void RestartGame()
+    {
+        StartCoroutine(RestartLevel());
+    }
+
     private IEnumerator RestartLevel()
     {
         Time.timeScale = 1f / __Slowness;
@@ -50,6 +66,19 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void ReturnHome()
+    {
+        EndGame(false);
+
+    }
+
+    public void ShowNameCollectionScreen(bool shouldShow)
+    {
+        __InputCanvas.SetActive(shouldShow);
+        __Canvas.SetActive(!shouldShow);
+        __ObnstacleSpawner.SetActive(!shouldShow);
+        __Player.SetActive(!shouldShow);
+    }
 
     private void Start()
     {
@@ -71,12 +100,6 @@ public class GameManager : MonoBehaviour
 
         int.TryParse(__ScoreText.text, out __CurrentScore);
         InvokeRepeating("AddToScore", 1f, __ScoreIncreaseSpeed);
-    }
-
-    void AddToScore()
-    {
-        __CurrentScore++;
-        __ScoreText.text = __CurrentScore.ToString();
     }
 
     public void UpdateHighScores()
@@ -108,34 +131,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddAppleScore()
-    {
-        __CurrentScore += __AppleScore;
-        __ScoreText.text = __CurrentScore.ToString();
-    }
-
-    public void ReturnHome()
-    {
-        EndGame(false);
-
-    }
-
     public void UpdateLeaderBoard()
     {
         __LeaderBoardScores.Add(__CurrentScore, __Name.text);
         SaveSystem.SavePlayerData(__LeaderBoardScores);
     }
 
-    public void ShowNameCollectionScreen(bool shouldShow)
-    {
-        __InputCanvas.SetActive(shouldShow);
-        __Canvas.SetActive(!shouldShow);
-        __ObnstacleSpawner.SetActive(!shouldShow);
-        __Player.SetActive(!shouldShow);
-    }
-
-    public void RestartGame()
-    {
-        StartCoroutine(RestartLevel());
-    }
+    
 }

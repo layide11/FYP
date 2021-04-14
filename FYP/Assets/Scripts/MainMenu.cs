@@ -10,17 +10,15 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +2);
     }
 
-
-    public void ViewLeaderBoard()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-   
-
     // called when QUit button is clicked
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ViewLeaderBoard()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 }

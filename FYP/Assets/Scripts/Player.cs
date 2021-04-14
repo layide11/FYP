@@ -4,18 +4,13 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
 
-	public float __Speed = 15f;
-	public float __MapWidth = 4.2f;
-	public Text __ScoreText;
-	public Text __HighScoreText;
 	private const string _ApplePrefabTag = "ApplePrefab";
 
+	public Text __HighScoreText;
+	public float __MapWidth = 4.2f;
 	private Rigidbody2D __RigidBody;
-
-	void Start()
-	{
-		__RigidBody = GetComponent<Rigidbody2D>();
-	}
+	public Text __ScoreText;
+	public float __Speed = 15f;
 
 	void FixedUpdate()
 	{
@@ -42,5 +37,10 @@ public class Player : MonoBehaviour
         {
 			_GameManager.UpdateHighScores();
         }
+	}
+
+	void Start()
+	{
+		__RigidBody = GetComponent<Rigidbody2D>();
 	}
 }

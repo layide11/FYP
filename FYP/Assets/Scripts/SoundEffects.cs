@@ -1,25 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
+
 
 public class SoundEffects : MonoBehaviour
 {
     private AudioSource __AudioSource;
-    public static bool __IsMute = false;
     private static SoundEffects __Instance = null;
-
-    void Start()
-    {
-        __AudioSource = GetComponent<AudioSource>();
-    }
-
-
-    public void MuteEffect(bool wantMusic)
-    {
-        __IsMute = !wantMusic;
-
-    }
+    public static bool __IsMute = false;
 
     void Awake()
     {
@@ -36,6 +22,17 @@ public class SoundEffects : MonoBehaviour
         }
     }
 
+    public bool GetIsMute()
+    {
+        return __IsMute;
+    }
+
+    public void MuteEffect(bool wantMusic)
+    {
+        __IsMute = !wantMusic;
+
+    }
+
     public void PlayEffect()
     {
         if (!__IsMute)
@@ -44,9 +41,9 @@ public class SoundEffects : MonoBehaviour
         }
     }
 
-
-    public bool GetIsMute()
+    void Start()
     {
-        return __IsMute;
+        __AudioSource = GetComponent<AudioSource>();
     }
+
 }

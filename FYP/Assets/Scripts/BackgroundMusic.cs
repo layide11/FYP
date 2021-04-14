@@ -1,30 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class BackgroundMusic : MonoBehaviour
 {
-    private bool __IsMute = false;
-    private float __MusicVolume = 1f;
     private AudioSource __AudioSource;
-    private static BackgroundMusic __Instance = null;
-
-    public Slider __MusicVolumeSLider;
-    public Toggle __MusicToggle;
     public Toggle __EffectsToggle;
-    void Start()
-    {
-       
-        __AudioSource = GetComponent<AudioSource>();
-        
-    }
-
-    private void Update()
-    {
-        __AudioSource.volume = __MusicVolume;
-        __AudioSource.mute = __IsMute;
-    }
+    private static BackgroundMusic __Instance = null;
+    private bool __IsMute = false;
+    public Toggle __MusicToggle;
+    private float __MusicVolume = 1f;
+    public Slider __MusicVolumeSLider;
 
     void Awake()
     {
@@ -45,15 +30,30 @@ public class BackgroundMusic : MonoBehaviour
         }
     }
 
+
     public void MuteMusic(bool wantMusic)
     {
         __IsMute = !wantMusic;
        
     }
-
  
     public void SetVolume(float volume)
     {
         __MusicVolume = volume;
     }
+
+    void Start()
+    {
+       
+        __AudioSource = GetComponent<AudioSource>();
+        
+    }
+
+    private void Update()
+    {
+        __AudioSource.volume = __MusicVolume;
+        __AudioSource.mute = __IsMute;
+    }
+
+
 }

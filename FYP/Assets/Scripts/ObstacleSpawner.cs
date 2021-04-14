@@ -5,38 +5,19 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public Transform[] __SpawnPoints;
+    public GameObject __ApplePrefab;
 
     public GameObject[] __FoodPrefabs;
 
-    public GameObject __ApplePrefab;
-
-    public float __TimeBetweenWaves = 2f;
+    private int __NoOfWavesSinceSpeedIncrease = 0;
 
     public int __ObstacleCount = 4;
 
+    public Transform[] __SpawnPoints;
+
+    public float __TimeBetweenWaves = 2f;
+
     private float __TimeToSpawn = 1f;
-
-    private int __NoOfWavesSinceSpeedIncrease = 0;
-
-
-    
-    void Update()
-    {
-
-        if (Time.time >= __TimeToSpawn)
-        {
-            SpawnFood();
-            __TimeToSpawn = Time.time + __TimeBetweenWaves;
-        }
-
-        if (__NoOfWavesSinceSpeedIncrease >= 5 && __TimeBetweenWaves > 0.6f)
-        {
-            __TimeBetweenWaves -= 0.2f;
-            __NoOfWavesSinceSpeedIncrease = 0;
-        }
-
-    }
 
     void SpawnFood()
     {
@@ -61,5 +42,22 @@ public class ObstacleSpawner : MonoBehaviour
         }
         __NoOfWavesSinceSpeedIncrease++;
         
+    }
+    
+    void Update()
+    {
+
+        if (Time.time >= __TimeToSpawn)
+        {
+            SpawnFood();
+            __TimeToSpawn = Time.time + __TimeBetweenWaves;
+        }
+
+        if (__NoOfWavesSinceSpeedIncrease >= 5 && __TimeBetweenWaves > 0.6f)
+        {
+            __TimeBetweenWaves -= 0.2f;
+            __NoOfWavesSinceSpeedIncrease = 0;
+        }
+
     }
 }

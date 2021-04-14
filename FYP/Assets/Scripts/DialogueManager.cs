@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,18 +10,6 @@ public class DialogueManager : MonoBehaviour
     public Text __DialogueText;
     private Queue<string> __Sentences;
 
-
-
-    public void StartDialogue(Dialogue dialogue)
-    {
-        __Sentences = new Queue<string>();
-
-        foreach (string _Sentence in dialogue.__Sentences)
-        {
-            __Sentences.Enqueue(_Sentence);
-        }
-        DisplayNextSentence();
-    }
 
     public void DisplayNextSentence()
     {
@@ -38,6 +25,22 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    public void EndDialogue()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void StartDialogue(Dialogue dialogue)
+    {
+        __Sentences = new Queue<string>();
+
+        foreach (string _Sentence in dialogue.__Sentences)
+        {
+            __Sentences.Enqueue(_Sentence);
+        }
+        DisplayNextSentence();
+    }
+
     IEnumerator TypeSentence(string sentence)
     {
         __DialogueText.text = "";
@@ -49,8 +52,4 @@ public class DialogueManager : MonoBehaviour
 
     }
 
-    public void EndDialogue()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
 }

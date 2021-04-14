@@ -4,21 +4,12 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
-public static class SaveSystem 
+public static class SaveSystem
 {
-   public static void SavePlayerData(Dictionary<int, string> leaderBoardScores )
+    static string GetFilePath()
     {
-        BinaryFormatter _Formatter = new BinaryFormatter();
-       
-        FileStream stream = new FileStream(GetFilePath(), FileMode.Create);
-
-
-        SavedData _Data = new SavedData(leaderBoardScores);
-
-        _Formatter.Serialize(stream, _Data);
-        stream.Close();
+        return Application.persistentDataPath + "/player.txt";
     }
-
 
     public static SavedData LoadSavedData()
     {
@@ -38,7 +29,7 @@ public static class SaveSystem
             {
                 _Data = _Formatter.Deserialize(_Stream) as SavedData;
                 //extra null check for secuirity
-                if(_Data.__LeaderBoardScores == null)
+                if (_Data.__LeaderBoardScores == null)
                 {
                     _Data.__LeaderBoardScores = new Dictionary<int, string>();
                 }
@@ -55,8 +46,17 @@ public static class SaveSystem
         }
     }
 
-    static string GetFilePath()
+    public static void SavePlayerData(Dictionary<int, string> leaderBoardScores)
     {
-        return Application.persistentDataPath + "/player.txt";
+        BinaryFormatter _Formatter = new BinaryFormatter();
+
+        FileStream stream = new FileStream(GetFilePath(), FileMode.Create);
+
+
+        SavedData _Data = new SavedData(leaderBoardScores);
+
+        _Formatter.Serialize(stream, _Data);
+        stream.Close();
     }
+
 }
