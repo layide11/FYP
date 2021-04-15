@@ -134,6 +134,7 @@ public class GameManager : MonoBehaviour
     public void UpdateLeaderBoard()
     {
         __LeaderBoardScores.Add(__CurrentScore, __Name.text);
+        
         SaveSystem.SavePlayerData(__LeaderBoardScores);
     }
 
